@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31229.75
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamarinMobileApp.Android", "XamarinMobileApp\XamarinMobileApp.Android\XamarinMobileApp.Android.csproj", "{F971B670-15F4-4FDC-9BF6-93E7995FDA8A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XamarinMobileApp", "XamarinMobileApp\XamarinMobileApp\XamarinMobileApp.csproj", "{C5475565-F953-4B5C-A9E4-4B8B70466861}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamarinMobileApp.Test", "XamarinMobileApp.Test\XamarinMobileApp.Test.csproj", "{4AAB26D5-7FDC-48EC-8B60-F36548D2B4B8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F971B670-15F4-4FDC-9BF6-93E7995FDA8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F971B670-15F4-4FDC-9BF6-93E7995FDA8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F971B670-15F4-4FDC-9BF6-93E7995FDA8A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F971B670-15F4-4FDC-9BF6-93E7995FDA8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F971B670-15F4-4FDC-9BF6-93E7995FDA8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F971B670-15F4-4FDC-9BF6-93E7995FDA8A}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{C5475565-F953-4B5C-A9E4-4B8B70466861}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5475565-F953-4B5C-A9E4-4B8B70466861}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5475565-F953-4B5C-A9E4-4B8B70466861}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{C5475565-F953-4B5C-A9E4-4B8B70466861}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5475565-F953-4B5C-A9E4-4B8B70466861}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5475565-F953-4B5C-A9E4-4B8B70466861}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{4AAB26D5-7FDC-48EC-8B60-F36548D2B4B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AAB26D5-7FDC-48EC-8B60-F36548D2B4B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AAB26D5-7FDC-48EC-8B60-F36548D2B4B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AAB26D5-7FDC-48EC-8B60-F36548D2B4B8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3B721E75-B794-4F78-9C87-9BB16C4407B4}
+	EndGlobalSection
+EndGlobal
