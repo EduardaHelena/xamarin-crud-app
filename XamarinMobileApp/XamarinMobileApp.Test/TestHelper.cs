@@ -14,7 +14,7 @@ namespace XamarinMobileApp.Test
     {
         public static void DeleteAll()
         {
-            using (var connection = new SqliteConnection("Data Source=sqlite.db"))
+            using (var connection =  ConnectionHelper.Create())
             {
                 connection.Execute(@"DELETE FROM Address");
                 connection.Execute(@"DELETE FROM User");

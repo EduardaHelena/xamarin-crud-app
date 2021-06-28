@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using XamarinMobileApp.Models;
 using Dapper;
+using XamarinMobileApp.Repositories;
 
 namespace XamarinMobileApp.Services
 {
@@ -14,7 +15,7 @@ namespace XamarinMobileApp.Services
 
         public void teste()
         {
-            using (var connection = new SqliteConnection("Data Source=sqlite.db"))
+            using (var connection =  ConnectionHelper.Create())
             {
     //            connection.QueryAsync<>("")
 

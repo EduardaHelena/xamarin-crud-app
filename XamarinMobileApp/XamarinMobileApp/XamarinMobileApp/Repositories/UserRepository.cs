@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
 using Dapper;
-using Microsoft.Data.Sqlite;
 using User = XamarinMobileApp.Models.User;
 
 namespace XamarinMobileApp.Repositories
@@ -11,7 +11,7 @@ namespace XamarinMobileApp.Repositories
     {
         public IEnumerable<User> GetAll()
         {
-            using (var connection = new SqliteConnection("Data Source=sqlite.db"))
+            using (var connection = ConnectionHelper.Create())
             {
                 return connection.Query<User>(@"SELECT * FROM User");
             }
@@ -19,14 +19,15 @@ namespace XamarinMobileApp.Repositories
 
         public User GetById(int Id)
         {
-            using (var connection = new SqliteConnection("Data Source=sqlite.db"))
+            using (var connection = ConnectionHelper.Create())
             {
                 return connection.QueryFirstOrDefault<User>(@"SELECT * FROM User WHERE Id = @Id", new { Id });
             }
         }
 
-        public User Insert(User User) {
-            using (var connection = new SqliteConnection("Data Source=sqlite.db"))
+        public User Insert(User User)
+        {
+            using (var connection = ConnectionHelper.Create())
             {
                 User.Id = connection.QueryFirst<int>(@"INSERT INTO User
                                      VALUES(NULL, @Name, @LastName, @CPF, @Birthday, @Gender); SELECT last_insert_rowid()", User);
@@ -34,8 +35,9 @@ namespace XamarinMobileApp.Repositories
             }
         }
 
-        public void Update(User User) {
-            using (var connection = new SqliteConnection("Data Source=sqlite.db"))
+        public void Update(User User)
+        {
+            using (var connection = ConnectionHelper.Create())
             {
                 connection.Execute(@"UPDATE User 
                                      SET Name = @Name, LastName = @LastName, CPF = @CPF, Birthday = @Birthday, Gender = @Gender 
@@ -45,7 +47,7 @@ namespace XamarinMobileApp.Repositories
 
         public void DeleteById(int Id)
         {
-            using (var connection = new SqliteConnection("Data Source=sqlite.db"))
+            using (var connection = ConnectionHelper.Create())
             {
                 connection.Execute(@"DELETE FROM User WHERE Id = @Id", new { Id });
             }
