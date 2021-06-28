@@ -51,11 +51,5 @@ namespace XamarinMobileApp.Repositories
             }
         }
 
-        public void DeleteAll() {
-            using (var connection = new SqliteConnection("Data Source=sqlite.db"))
-            {
-                connection.Execute(@"DELETE FROM User");
-            }
-        }
     }
 }

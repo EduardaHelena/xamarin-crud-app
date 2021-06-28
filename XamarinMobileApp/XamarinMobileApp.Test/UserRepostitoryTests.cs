@@ -8,25 +8,14 @@ namespace XamarinMobileApp.Test
 {
     public class UserRepostitoryTests
     {
-        public User newUser() {
-            var user = new User();
-            user.Name = "Teste";
-            user.LastName = "123";
-            user.CPF = "12345678913";
-            user.Birthday = new DateTime();
-            user.Gender = 0;
-
-            return user;
-        }
 
         [Fact]
         public void Insert()
         {
             var userRepository = new UserRepository();
 
-            userRepository.DeleteAll();
-
-            var user = newUser();
+            TestHelper.DeleteAll();
+            var user = TestHelper.newUser();
 
             var userInsert = userRepository.Insert(user);
 
@@ -41,9 +30,8 @@ namespace XamarinMobileApp.Test
         {
             var userRepository = new UserRepository();
 
-            userRepository.DeleteAll();
-
-            var user = newUser();
+            TestHelper.DeleteAll();
+            var user = TestHelper.newUser();
 
             user = userRepository.Insert(user);
 
@@ -56,9 +44,9 @@ namespace XamarinMobileApp.Test
         public void Update()
         {
             var userRepository = new UserRepository();
-            userRepository.DeleteAll();
+            TestHelper.DeleteAll();
 
-            var user = newUser();
+            var user = TestHelper.newUser();
             user = userRepository.Insert(user);
 
             user.Name = "Teste Update";
@@ -82,9 +70,9 @@ namespace XamarinMobileApp.Test
         public void DeleteById()
         {
             var userRepository = new UserRepository();
-            userRepository.DeleteAll();
+            TestHelper.DeleteAll();
 
-            var user = newUser();
+            var user = TestHelper.newUser();
             user = userRepository.Insert(user);
             
             userRepository.DeleteById(user.Id);
