@@ -27,5 +27,23 @@ namespace XamarinMobileApp.Repositories
                 return Address;
             }
         }
+
+        public void Update(Address Address)
+        {
+            using (var connection = new SqliteConnection("Data Source=sqlite.db"))
+            {
+                connection.Execute(@"UPDATE Address 
+                                     SET Street = @Street, Number = @Number, District = @District, City = @City, State = @State, AddressComplement = @AddressComplement, CEP = @CEP
+                                     WHERE Id = @Id", Address);
+            }
+        }
+
+        public void DeleteById(int Id)
+        {
+            using (var connection = new SqliteConnection("Data Source=sqlite.db"))
+            {
+                connection.Execute(@"DELETE FROM Address WHERE Id = @Id", new { Id });
+            }
+        }
     }
 }
