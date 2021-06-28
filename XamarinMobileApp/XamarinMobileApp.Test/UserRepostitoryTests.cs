@@ -62,11 +62,20 @@ namespace XamarinMobileApp.Test
             user = userRepository.Insert(user);
 
             user.Name = "Teste Update";
+            user.LastName = "456";
+            user.CPF = "888888888888";
+            user.Birthday = new DateTime();
+            user.Gender = Gender.Female;
+
             userRepository.Update(user);
 
             var getUser = userRepository.GetById(user.Id);
 
             Assert.Equal(user.Name, getUser.Name);
+            Assert.Equal(user.LastName, getUser.LastName);
+            Assert.Equal(user.CPF, getUser.CPF);
+            Assert.Equal(user.Birthday, getUser.Birthday);
+            Assert.Equal(user.Gender, getUser.Gender);
         }
         
         [Fact]
