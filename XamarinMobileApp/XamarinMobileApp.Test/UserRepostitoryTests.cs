@@ -66,7 +66,7 @@ namespace XamarinMobileApp.Test
 
             var getUser = userRepository.GetById(user.Id);
 
-            Assert.True(getUser.Name == user.Name);
+            Assert.Equal(user.Name, getUser.Name);
         }
         
         [Fact]
