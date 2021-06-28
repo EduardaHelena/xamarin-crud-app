@@ -51,5 +51,38 @@ namespace XamarinMobileApp.Test
 
             Assert.True(getUser.Id == user.Id);
         }
+        
+        [Fact]
+        public void Update()
+        {
+            var userRepository = new UserRepository();
+            userRepository.DeleteAll();
+
+            var user = newUser();
+            user = userRepository.Insert(user);
+
+            user.Name = "Teste Update";
+            userRepository.Update(user);
+
+            var getUser = userRepository.GetById(user.Id);
+
+            Assert.True(getUser.Name == user.Name);
+        }
+        
+        [Fact]
+        public void DeleteById()
+        {
+            var userRepository = new UserRepository();
+            userRepository.DeleteAll();
+
+            var user = newUser();
+            user = userRepository.Insert(user);
+            
+            userRepository.DeleteById(user.Id);
+
+            var getUser = userRepository.GetById(user.Id);
+
+            Assert.Null(getUser);
+        }
     }
 }

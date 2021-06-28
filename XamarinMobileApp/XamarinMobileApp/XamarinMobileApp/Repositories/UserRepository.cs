@@ -16,6 +16,7 @@ namespace XamarinMobileApp.Repositories
                 return connection.Query<User>(@"SELECT * FROM User");
             }
         }
+
         public User GetById(int Id)
         {
             using (var connection = new SqliteConnection("Data Source=sqlite.db"))
@@ -30,6 +31,23 @@ namespace XamarinMobileApp.Repositories
                 User.Id = connection.QueryFirst<int>(@"INSERT INTO User
                                      VALUES(NULL, @Name, @LastName, @CPF, @Birthday, @Gender); SELECT last_insert_rowid()", User);
                 return User;
+            }
+        }
+
+        public void Update(User User) {
+            using (var connection = new SqliteConnection("Data Source=sqlite.db"))
+            {
+                connection.Execute(@"UPDATE User 
+                                     SET Name = @Name, LastName = @LastName, CPF = @CPF, Birthday = @Birthday, Gender = @Gender 
+                                     WHERE Id = @Id", User);
+            }
+        }
+
+        public void DeleteById(int Id)
+        {
+            using (var connection = new SqliteConnection("Data Source=sqlite.db"))
+            {
+                connection.Execute(@"DELETE FROM User WHERE Id = @Id", new { Id });
             }
         }
 
