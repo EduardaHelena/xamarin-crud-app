@@ -14,32 +14,11 @@ namespace XamarinMobileApp.Test
     public class AddressRepostitoryTests
     {
 
-        public Address newAddress()
-        {
-            TestHelper.DeleteAll();
-            var userRepository = new UserRepository();
-
-            var user = TestHelper.newUser();
-
-            user = userRepository.Insert(user);
-
-            var address = new Address();
-            address.UserId = user.Id;
-            address.Street = "Rua 123";
-            address.Number = 456;
-            address.District = "Otpx";
-            address.City = "Xpto";
-            address.State = "Xpto Otpx";
-            address.CEP = 12345678;
-
-            return address;
-        }
-
         [Fact]
         public void GetByUser() {
             TestHelper.DeleteAll();
 
-            var address = newAddress();
+            var address = TestHelper.newAddress();
             var addressRepository = new AddressRepository();
 
             addressRepository.Insert(address);
