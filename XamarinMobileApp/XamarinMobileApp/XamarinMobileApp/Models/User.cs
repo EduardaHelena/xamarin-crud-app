@@ -12,6 +12,7 @@ namespace XamarinMobileApp.Models
         public string CPF { get; set; }
         public DateTime Birthday { get; set; }
         public Gender Gender { get; set; }
+        public Address Address { get; set; }
 
     }
 }

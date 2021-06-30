@@ -64,6 +64,9 @@ namespace XamarinMobileApp.Test
             Assert.Equal(user.CPF, getUser.CPF);
             Assert.Equal(user.Birthday, getUser.Birthday);
             Assert.Equal(user.Gender, getUser.Gender);
+            Assert.Equal(user.Address.Number, getUser.Address.Number);
+            Assert.Equal(user.Address.State, getUser.Address.State);
+            Assert.Equal(user.Address.Street, getUser.Address.Street);
         }
         
         [Fact]
