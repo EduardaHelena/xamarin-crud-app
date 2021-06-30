@@ -35,7 +35,7 @@ namespace XamarinMobileApp.Test
             user.Name = "Teste";
             user.LastName = "123";
             user.CPF = "12345678913";
-            user.Birthday = new DateTime();
+            user.Birthday = DateTime.Today.AddYears(-19);
             user.Gender = 0;
             user.Address = newAddress();
             return user;
