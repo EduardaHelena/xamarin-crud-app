@@ -11,11 +11,11 @@ CREATE TABLE Address (
 	Id INTEGER PRIMARY KEY,
     UserId INTEGER NOT NULL,
     Street VARCHAR NOT NULL, 
-    Number INT NOT NULL, 
+    Number VARCHAR(8) NOT NULL, 
     District VARCHAR NOT NULL, 
     City VARCHAR NOT NULL, 
     State VARCHAR NOT NULL, 
     AddressComplement VARCHAR,
     CEP VARCHAR(8) NOT NULL,
-    FOREIGN KEY (UserId) REFERENCES User (Id),
+    FOREIGN KEY (UserId) REFERENCES User (Id)
 );
