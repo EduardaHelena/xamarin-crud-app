@@ -13,21 +13,18 @@ namespace XamarinMobileApp.Services
             if (user == null)
                 user = new User();
 
-            if (user.Name == null)
+            if (string.IsNullOrWhiteSpace(user.Name))
                 result.ErrorMessages.Add("O Nome é obrigatorio");
 
-            if (user.LastName == null)
+            if (string.IsNullOrWhiteSpace(user.LastName))
                 result.ErrorMessages.Add("Sobrenome é obrigatorio");
 
-            if (user.CPF == null)
+            if (string.IsNullOrWhiteSpace(user.CPF))
                 result.ErrorMessages.Add("CPF é obrigatorio");
             else if (user.CPF.Length != 11)
                 result.ErrorMessages.Add("CPF precisa ter 11 digitos");
             else if (!user.CPF.All(char.IsDigit))
                 result.ErrorMessages.Add("CPF só pode conter números");
-
-            if (user.Birthday == null)
-                result.ErrorMessages.Add("Data de nascimento é obrigatorio");
 
             if (user.Birthday == null)
                 result.ErrorMessages.Add("Data de nascimento é obrigatorio");
@@ -46,22 +43,22 @@ namespace XamarinMobileApp.Services
             if (address == null)
                 address = new Address();
 
-            if (address.Street == null)
+            if (string.IsNullOrWhiteSpace(address.Street))
                 errorMensage.Add("Logradouro é obrigatorio");
 
-            if (address.Number == null)
+            if (string.IsNullOrWhiteSpace(address.Number))
                 errorMensage.Add("Numero é obrigatorio");
 
-            if (address.District == null)
+            if (string.IsNullOrWhiteSpace(address.District))
                 errorMensage.Add("Bairro é obrigatorio");
 
-            if (address.City == null)
+            if (string.IsNullOrWhiteSpace(address.City))
                 errorMensage.Add("Cidade é obrigatorio");
 
-            if (address.State == null)
+            if (string.IsNullOrWhiteSpace(address.State))
                 errorMensage.Add("Estado é obrigatorio");
 
-            if (address.CEP == null)
+            if (string.IsNullOrWhiteSpace(address.CEP))
                 errorMensage.Add("CEP é obrigatorio");
             else if (address.CEP.Length != 8)
                 errorMensage.Add( "CEP precisa ter 8 digitos");
