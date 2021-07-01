@@ -35,11 +35,18 @@ namespace XamarinMobileApp.Test.Services
             user.CPF = "123234234234234";
             var resultUserBigCPF = validator.ValidateUser(user);
 
+            user.CPF = "1e3n5b7v9a2";
+            var resultUserCPFWithLetters = validator.ValidateUser(user);
+
+
             Assert.True(resultUserSmallCPF.HasError);
             Assert.Single(resultUserSmallCPF.ErrorMessages);
 
             Assert.True(resultUserBigCPF.HasError);
             Assert.Single(resultUserBigCPF.ErrorMessages);
+
+            Assert.True(resultUserCPFWithLetters.HasError);
+            Assert.Single(resultUserCPFWithLetters.ErrorMessages);
         }
 
         [Fact]
