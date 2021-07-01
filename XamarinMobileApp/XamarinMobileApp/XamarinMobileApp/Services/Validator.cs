@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using XamarinMobileApp.Models;
 
 namespace XamarinMobileApp.Services
@@ -22,6 +23,8 @@ namespace XamarinMobileApp.Services
                 result.ErrorMessages.Add("CPF é obrigatorio");
             else if (user.CPF.Length != 11)
                 result.ErrorMessages.Add("CPF precisa ter 11 digitos");
+            else if (!user.CPF.All(char.IsDigit))
+                result.ErrorMessages.Add("CPF só pode conter números");
 
             if (user.Birthday == null)
                 result.ErrorMessages.Add("Data de nascimento é obrigatorio");
@@ -62,6 +65,8 @@ namespace XamarinMobileApp.Services
                 errorMensage.Add("CEP é obrigatorio");
             else if (address.CEP.Length != 8)
                 errorMensage.Add( "CEP precisa ter 8 digitos");
+            else if (!address.CEP.All(char.IsDigit))
+                errorMensage.Add("CEP só pode conter números");
 
             return errorMensage;
 

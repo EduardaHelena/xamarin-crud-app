@@ -72,14 +72,20 @@ namespace XamarinMobileApp.Test.Services
             user.Address.CEP = "123";
             var resultUserSmallCEP = validator.ValidateUser(user);
 
-            user.Address.CEP = "12323232323";
+            user.Address.CEP = "12323232321111113";
             var resultUserBigCEP = validator.ValidateUser(user);
+
+            user.Address.CEP = "1q2w34e4";
+            var resultUserCEPWithLetters = validator.ValidateUser(user);
 
             Assert.True(resultUserSmallCEP.HasError);
             Assert.Single(resultUserSmallCEP.ErrorMessages);
 
             Assert.True(resultUserBigCEP.HasError);
             Assert.Single(resultUserBigCEP.ErrorMessages);
+
+            Assert.True(resultUserCEPWithLetters.HasError);
+            Assert.Single(resultUserCEPWithLetters.ErrorMessages);
         }
 
     }
