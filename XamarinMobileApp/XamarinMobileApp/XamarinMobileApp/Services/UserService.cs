@@ -7,6 +7,9 @@ namespace XamarinMobileApp.Services
 {
     public class UserService
     {
+        UserRepository userRepository = new UserRepository();
+        Validator validator = new Validator();
+
         public IEnumerable<User> GetAll()
         {
        
@@ -18,28 +21,36 @@ namespace XamarinMobileApp.Services
 
         public User GetById(int userId)
         {
-
-            var userRepository = new UserRepository();
             var user = userRepository.GetById(userId);
-
             return user;
         }
 
         public Result<User> CreateUser(User user)
         {
-            var validator = new Validator();
-
             var resultUser = validator.ValidateUser(user);
 
             if (resultUser.HasError)
                 return resultUser;
 
-            var userRepository = new UserRepository();
             resultUser.Data = userRepository.Insert(user);
 
             return resultUser;
         }
+        public Result<User> UpdateUser (User user)
+        {
+            var resultUser = validator.ValidateUser(user);
 
+            if (resultUser.HasError)
+                return resultUser;
 
+            userRepository.Update(user);
+
+            return resultUser;
+        }
+
+        public void DeleteUser(int userID)
+        {
+            userRepository.DeleteById(userID);
+        }
     }
 }
