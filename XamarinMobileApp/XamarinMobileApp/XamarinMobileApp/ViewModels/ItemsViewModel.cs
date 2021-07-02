@@ -22,7 +22,7 @@ namespace XamarinMobileApp.ViewModels
 
         public ItemsViewModel()
         {
-            Title = "Pessoas";
+            Title = "Users";
             Users = new ObservableCollection<User>();
             LoadItemsCommand = new Command(() => ExecuteLoadItemsCommand());
 

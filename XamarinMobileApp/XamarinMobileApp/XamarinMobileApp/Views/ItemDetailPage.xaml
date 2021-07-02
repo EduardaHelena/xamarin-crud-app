@@ -6,7 +6,7 @@
     <ScrollView>
         <StackLayout Spacing="5" Padding="20">
                 <Label Text="Name" FontSize="Medium" />
-                <Entry TextColor="{Binding TextColor}" Text="{Binding Name, Mode=TwoWay}" FontSize="Medium" />
+                <Entry Text="{Binding Name, Mode=TwoWay}" FontSize="Medium" />
 
                 <Label Text="Lastname" FontSize="Medium" />
                 <Editor Text="{Binding LastName, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
