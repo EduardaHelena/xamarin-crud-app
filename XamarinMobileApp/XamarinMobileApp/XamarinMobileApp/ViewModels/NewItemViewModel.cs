@@ -21,6 +21,15 @@ namespace XamarinMobileApp.ViewModels
         private DateTime minimumDate = new DateTime(1900, 1, 1);
         private DateTime maximumDate = DateTime.Today;
 
+        private string street;
+        private string number;
+        private string district;
+        private string city;
+        private string state;
+        private string addressComplement;
+        private string cep;
+
+
         public NewItemViewModel()
         {
             SaveCommand = new Command(OnSave, ValidateSave);
@@ -130,6 +139,48 @@ namespace XamarinMobileApp.ViewModels
             set => SetProperty(ref maximumDate, value);
         }
 
+        public string Street
+        {
+            get => street;
+            set => SetProperty(ref street, value);
+        }
+
+        public string Number
+        {
+            get => number;
+            set => SetProperty(ref number, value);
+        }
+
+        public string District
+        {
+            get => district;
+            set => SetProperty(ref district, value);
+        }
+
+        public string City
+        {
+            get => city;
+            set => SetProperty(ref city, value);
+        }
+
+        public string State
+        {
+            get => state;
+            set => SetProperty(ref state, value);
+        }
+
+        public string AddressComplement
+        {
+            get => addressComplement;
+            set => SetProperty(ref addressComplement, value);
+        }
+
+        public string CEP
+        {
+            get => cep;
+            set => SetProperty(ref cep, value);
+        }
+
         public Command SaveCommand { get; }
         public Command CancelCommand { get; }
 
@@ -152,14 +203,13 @@ namespace XamarinMobileApp.ViewModels
                 Gender = gender,
                 Address = new Address
                 {
-                    AddressComplement = "4022",
-                    CEP = "21625140",
-                    City = "Rio",
-                    District = "rio",
-                    Number = "1",
-                    State = "Rio",
-                    Street = "Rio"
-
+                    Street = Street,
+                    Number = Number,
+                    District = District,
+                    City = City,
+                    State = State,
+                    AddressComplement = AddressComplement,
+                    CEP = CEP
                 }
             };
 

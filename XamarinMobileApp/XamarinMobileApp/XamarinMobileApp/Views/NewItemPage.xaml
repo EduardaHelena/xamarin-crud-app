@@ -7,34 +7,54 @@
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true">
     <ContentPage.Content>
-        <StackLayout Spacing="3" Padding="15">
-            <Label Text="Name" FontSize="Medium" />
-            <Entry TextColor="{Binding TextColor}" Text="{Binding Name, Mode=TwoWay}" FontSize="Medium" />
+        <ScrollView>
+            <StackLayout Spacing="5" Padding="20">
+                <Label Text="Name" FontSize="Medium" />
+                <Entry TextColor="{Binding TextColor}" Text="{Binding Name, Mode=TwoWay}" FontSize="Medium" />
             
-            <Label Text="Lastname" FontSize="Medium" />
-            <Editor Text="{Binding LastName, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+                <Label Text="Lastname" FontSize="Medium" />
+                <Editor Text="{Binding LastName, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
 
-            <Label Text="CPF" FontSize="Medium" />
-            <Editor Text="{Binding CPF, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" MaxLength="11" Margin="0" />
+                <Label Text="CPF" FontSize="Medium" />
+                <Editor Text="{Binding CPF, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" MaxLength="11" Margin="0" />
 
-            <Label Text="Birthday" FontSize="Medium" />
-            <DatePicker MinimumDate="{Binding MinimumDate}" MaximumDate="{Binding MaximumDate}" Date="{Binding Birthday}" />
+                <Label Text="Birthday" FontSize="Medium" />
+                <DatePicker MinimumDate="{Binding MinimumDate}" MaximumDate="{Binding MaximumDate}" Date="{Binding Birthday}" />
 
-            <Label Text="Gender" FontSize="Medium" />
-            <Picker x:Name="Gender" HorizontalOptions="FillAndExpand" SelectedItem="{Binding Gender}">
-                <Picker.Items>
-                    <x:String>Unanswered</x:String>
-                    <x:String>Male</x:String>
-                    <x:String>Female</x:String>
-                    <x:String>Other</x:String>
-                </Picker.Items>
-            </Picker>
+                <Label Text="Gender" FontSize="Medium" />
+                <Picker x:Name="Gender" HorizontalOptions="FillAndExpand" SelectedItem="{Binding Gender}">
+                    <Picker.Items>
+                        <x:String>Unanswered</x:String>
+                        <x:String>Male</x:String>
+                        <x:String>Female</x:String>
+                        <x:String>Other</x:String>
+                    </Picker.Items>
+                </Picker>
 
-            <StackLayout Orientation="Horizontal" Padding="15">
-                <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
-                <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
+                <Label Text="Street" FontSize="Medium" />
+                <Editor Text="{Binding Street, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+
+                <Label Text="Number" FontSize="Medium" />
+                <Editor Text="{Binding Number, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" MaxLength="8" Margin="0" />
+
+                <Label Text="District" FontSize="Medium" />
+                <Editor Text="{Binding District, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+
+                <Label Text="City" FontSize="Medium" />
+                <Editor Text="{Binding City, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+
+                <Label Text="State" FontSize="Medium" />
+                <Editor Text="{Binding State, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+
+                <Label Text="CEP" FontSize="Medium" />
+                <Editor Text="{Binding CEP, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" MaxLength="8" Margin="0" />
+
+                <StackLayout Orientation="Horizontal" Padding="15">
+                    <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
+                    <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
+                </StackLayout>
             </StackLayout>
-        </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
     
 </ContentPage>
