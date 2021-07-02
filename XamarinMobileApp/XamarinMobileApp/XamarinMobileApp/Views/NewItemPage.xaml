@@ -46,6 +46,9 @@
                 <Label Text="State" FontSize="Medium" />
                 <Editor Text="{Binding State, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
 
+                <Label Text="AddressComplement" FontSize="Medium" />
+                <Editor Text="{Binding AddressComplement, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+
                 <Label Text="CEP" FontSize="Medium" />
                 <Editor Text="{Binding CEP, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" MaxLength="8" Margin="0" />
 
