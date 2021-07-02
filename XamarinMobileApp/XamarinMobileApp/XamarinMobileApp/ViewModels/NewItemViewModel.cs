@@ -11,8 +11,6 @@ namespace XamarinMobileApp.ViewModels
     public class NewItemViewModel : UserBaseViewModel
     {
 
-        private Color? textColor;
-
 
         public NewItemViewModel()
         {
@@ -24,18 +22,7 @@ namespace XamarinMobileApp.ViewModels
 
         private bool ValidateSave()
         {
-            if (Name?.Length > 4)
-                TextColor = Color.Green;
-            else
-                TextColor = Color.Red;
-
             return true;
-        }
-
-        public Color? TextColor
-        {
-            get => textColor;
-            set => SetProperty(ref textColor, value);
         }
 
         public Command SaveCommand { get; }
