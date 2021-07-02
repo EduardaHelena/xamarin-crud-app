@@ -10,9 +10,16 @@ namespace XamarinMobileApp.ViewModels
 {
     public class NewItemViewModel : BaseViewModel
     {
-        private string text;
-        private string description;
+        private string name;
+        private string lastname;
+        private string cpf;
+        private DateTime birthday;
+        private Gender gender;
+
         private Color? textColor;
+
+        private DateTime minimumDate = new DateTime(1900, 1, 1);
+        private DateTime maximumDate = DateTime.Today;
 
         public NewItemViewModel()
         {
@@ -24,19 +31,19 @@ namespace XamarinMobileApp.ViewModels
 
         private bool ValidateSave()
         {
-            if (Text?.Length > 4)
+            if (Name?.Length > 4)
                 TextColor = Color.Green;
             else
                 TextColor = Color.Red;
 
-            return !String.IsNullOrWhiteSpace(text)
-                && !String.IsNullOrWhiteSpace(description);
+            return !String.IsNullOrWhiteSpace(name)
+                && !String.IsNullOrWhiteSpace(lastname);
         }
 
-        public string Text
+        public string Name
         {
-            get => text;
-            set => SetProperty(ref text, value);
+            get => name;
+            set => SetProperty(ref name, value);
         }
 
         public Color? TextColor
@@ -45,10 +52,82 @@ namespace XamarinMobileApp.ViewModels
             set => SetProperty(ref textColor, value);
         }
 
-        public string Description
+        public string LastName
         {
-            get => description;
-            set => SetProperty(ref description, value);
+            get => lastname;
+            set => SetProperty(ref lastname, value);
+        }
+
+        public string CPF
+        {
+            get => cpf;
+            set => SetProperty(ref cpf, value);
+        }
+
+        public DateTime Birthday
+        {
+            get => birthday;
+            set => SetProperty(ref birthday, value);
+        }
+
+        public string Gender
+        {
+            get {
+                switch (gender)
+                {
+                    case Models.Gender.Unanswered:
+                        return "Unanswered";
+
+                    case Models.Gender.Female:
+                        return "Female";
+
+                    case Models.Gender.Male:
+                        return "Male";
+
+                    case Models.Gender.Other:
+                        return "Other";
+
+                    default:
+                        return "Unanswered";
+                }
+            }
+
+            set {
+                switch (value)
+                {
+                    case "Unanswered":
+                        gender = Models.Gender.Unanswered;
+                        break;
+
+                    case "Female":
+                        gender = Models.Gender.Female;
+                        break;
+
+                    case "Male":
+                        gender = Models.Gender.Male;
+                        break;
+
+                    case "Other":
+                        gender = Models.Gender.Other;
+                        break;
+
+                    default:
+                        gender = Models.Gender.Unanswered;
+                        break;
+                }
+            }
+        }
+
+        public DateTime MinimumDate
+        {
+            get => minimumDate;
+            set => SetProperty(ref minimumDate, value);
+        }
+
+        public DateTime MaximumDate
+        {
+            get => maximumDate;
+            set => SetProperty(ref maximumDate, value);
         }
 
         public Command SaveCommand { get; }
@@ -66,11 +145,11 @@ namespace XamarinMobileApp.ViewModels
 
             User user = new User()
             {
-                Name = Text,
-                LastName = Description,
-                Birthday = DateTime.Today.AddYears(-18),
-                CPF = "11111111111",
-                Gender = Gender.Male,
+                Name = Name,
+                LastName = LastName,
+                CPF = CPF,
+                Birthday = Birthday,
+                Gender = gender,
                 Address = new Address
                 {
                     AddressComplement = "4022",

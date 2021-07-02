@@ -8,11 +8,29 @@
              ios:Page.UseSafeArea="true">
     <ContentPage.Content>
         <StackLayout Spacing="3" Padding="15">
-            <Label Text="Text" FontSize="Medium" />
-            <Entry TextColor="{Binding TextColor}" Text="{Binding Text, Mode=TwoWay}" FontSize="Medium" />
-            <Label Text="Description" FontSize="Medium" />
-            <Editor Text="{Binding Description, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
-            <StackLayout Orientation="Horizontal">
+            <Label Text="Name" FontSize="Medium" />
+            <Entry TextColor="{Binding TextColor}" Text="{Binding Name, Mode=TwoWay}" FontSize="Medium" />
+            
+            <Label Text="Lastname" FontSize="Medium" />
+            <Editor Text="{Binding LastName, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+
+            <Label Text="CPF" FontSize="Medium" />
+            <Editor Text="{Binding CPF, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" MaxLength="11" Margin="0" />
+
+            <Label Text="Birthday" FontSize="Medium" />
+            <DatePicker MinimumDate="{Binding MinimumDate}" MaximumDate="{Binding MaximumDate}" Date="{Binding Birthday}" />
+
+            <Label Text="Gender" FontSize="Medium" />
+            <Picker x:Name="Gender" HorizontalOptions="FillAndExpand" SelectedItem="{Binding Gender}">
+                <Picker.Items>
+                    <x:String>Unanswered</x:String>
+                    <x:String>Male</x:String>
+                    <x:String>Female</x:String>
+                    <x:String>Other</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <StackLayout Orientation="Horizontal" Padding="15">
                 <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
                 <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
             </StackLayout>
