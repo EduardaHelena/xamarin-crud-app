@@ -4,6 +4,7 @@ using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
+using XamarinMobileApp.Repositories;
 
 namespace XamarinMobileApp.Droid
 {
@@ -12,6 +13,7 @@ namespace XamarinMobileApp.Droid
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            ConnectionHelper.CreateTables();
             base.OnCreate(savedInstanceState);
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);

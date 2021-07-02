@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 
 using XamarinMobileApp.Models;
+using XamarinMobileApp.Services;
 using XamarinMobileApp.Views;
 
 namespace XamarinMobileApp.ViewModels
@@ -14,33 +15,34 @@ namespace XamarinMobileApp.ViewModels
     {
         private Item _selectedItem;
 
-        public ObservableCollection<Item> Items { get; }
+        public ObservableCollection<User> Users { get; }
         public Command LoadItemsCommand { get; }
         public Command AddItemCommand { get; }
         public Command<Item> ItemTapped { get; }
 
         public ItemsViewModel()
         {
-            Title = "Browse";
-            Items = new ObservableCollection<Item>();
-            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
+            Title = "Pessoas";
+            Users = new ObservableCollection<User>();
+            LoadItemsCommand = new Command(() => ExecuteLoadItemsCommand());
 
             ItemTapped = new Command<Item>(OnItemSelected);
 
             AddItemCommand = new Command(OnAddItem);
         }
 
-        async Task ExecuteLoadItemsCommand()
+        void ExecuteLoadItemsCommand()
         {
             IsBusy = true;
 
             try
             {
-                Items.Clear();
-                var items = await DataStore.GetItemsAsync(true);
+                Users.Clear();
+                var userService = new UserService();
+                var items =  userService.GetAll();
                 foreach (var item in items)
                 {
-                    Items.Add(item);
+                    Users.Add(item);
                 }
             }
             catch (Exception ex)

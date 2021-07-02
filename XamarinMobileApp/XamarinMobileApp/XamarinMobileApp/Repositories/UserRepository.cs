@@ -12,6 +12,8 @@ namespace XamarinMobileApp.Repositories
         {
             using (var connection = ConnectionHelper.Create())
             {
+               
+
                 return connection.Query<User, Address, User>(
                     @"SELECT * 
                         FROM User 

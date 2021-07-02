@@ -4,6 +4,7 @@ using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 using XamarinMobileApp.Models;
+using XamarinMobileApp.Services;
 
 namespace XamarinMobileApp.ViewModels
 {
@@ -11,6 +12,7 @@ namespace XamarinMobileApp.ViewModels
     {
         private string text;
         private string description;
+        private Color? textColor;
 
         public NewItemViewModel()
         {
@@ -22,6 +24,11 @@ namespace XamarinMobileApp.ViewModels
 
         private bool ValidateSave()
         {
+            if (Text?.Length > 4)
+                TextColor = Color.Green;
+            else
+                TextColor = Color.Red;
+
             return !String.IsNullOrWhiteSpace(text)
                 && !String.IsNullOrWhiteSpace(description);
         }
@@ -30,6 +37,12 @@ namespace XamarinMobileApp.ViewModels
         {
             get => text;
             set => SetProperty(ref text, value);
+        }
+
+        public Color? TextColor
+        {
+            get => textColor;
+            set => SetProperty(ref textColor, value);
         }
 
         public string Description
@@ -49,14 +62,29 @@ namespace XamarinMobileApp.ViewModels
 
         private async void OnSave()
         {
-            Item newItem = new Item()
+            var userService = new UserService();
+
+            User user = new User()
             {
-                Id = Guid.NewGuid().ToString(),
-                Text = Text,
-                Description = Description
+                Name = Text,
+                LastName = Description,
+                Birthday = DateTime.Today.AddYears(-18),
+                CPF = "11111111111",
+                Gender = Gender.Male,
+                Address = new Address
+                {
+                    AddressComplement = "4022",
+                    CEP = "21625140",
+                    City = "Rio",
+                    District = "rio",
+                    Number = "1",
+                    State = "Rio",
+                    Street = "Rio"
+
+                }
             };
 
-            await DataStore.AddItemAsync(newItem);
+            userService.CreateUser(user);
 
             // This will pop the current page off the navigation stack
             await Shell.Current.GoToAsync("..");
