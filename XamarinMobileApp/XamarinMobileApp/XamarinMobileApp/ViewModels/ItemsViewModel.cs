@@ -13,12 +13,12 @@ namespace XamarinMobileApp.ViewModels
 {
     public class ItemsViewModel : BaseViewModel
     {
-        private Item _selectedItem;
+        private User _selectedItem;
 
         public ObservableCollection<User> Users { get; }
         public Command LoadItemsCommand { get; }
         public Command AddItemCommand { get; }
-        public Command<Item> ItemTapped { get; }
+        public Command<User> ItemTapped { get; }
 
         public ItemsViewModel()
         {
@@ -26,7 +26,7 @@ namespace XamarinMobileApp.ViewModels
             Users = new ObservableCollection<User>();
             LoadItemsCommand = new Command(() => ExecuteLoadItemsCommand());
 
-            ItemTapped = new Command<Item>(OnItemSelected);
+            ItemTapped = new Command<User>(OnItemSelected);
 
             AddItemCommand = new Command(OnAddItem);
         }
@@ -61,7 +61,7 @@ namespace XamarinMobileApp.ViewModels
             SelectedItem = null;
         }
 
-        public Item SelectedItem
+        public User SelectedItem
         {
             get => _selectedItem;
             set
@@ -76,13 +76,13 @@ namespace XamarinMobileApp.ViewModels
             await Shell.Current.GoToAsync(nameof(NewItemPage));
         }
 
-        async void OnItemSelected(Item item)
+        async void OnItemSelected(User user)
         {
-            if (item == null)
+            if (user == null)
                 return;
 
             // This will push the ItemDetailPage onto the navigation stack
-            await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.ItemId)}={item.Id}");
+            await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.ItemId)}={user.Id}");
         }
     }
 }

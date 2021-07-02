@@ -16,6 +16,15 @@ namespace XamarinMobileApp.Services
             return users;
         }
 
+        public User GetById(int userId)
+        {
+
+            var userRepository = new UserRepository();
+            var user = userRepository.GetById(userId);
+
+            return user;
+        }
+
         public Result<User> CreateUser(User user)
         {
             var validator = new Validator();

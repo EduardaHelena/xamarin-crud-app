@@ -3,28 +3,15 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using XamarinMobileApp.Models;
+using XamarinMobileApp.Services;
 
 namespace XamarinMobileApp.ViewModels
 {
     [QueryProperty(nameof(ItemId), nameof(ItemId))]
-    public class ItemDetailViewModel : BaseViewModel
+    public class ItemDetailViewModel : UserBaseViewModel
     {
+        public UserService userSerivice = new UserService();
         private string itemId;
-        private string text;
-        private string description;
-        public string Id { get; set; }
-
-        public string Text
-        {
-            get => text;
-            set => SetProperty(ref text, value);
-        }
-
-        public string Description
-        {
-            get => description;
-            set => SetProperty(ref description, value);
-        }
 
         public string ItemId
         {
@@ -39,14 +26,28 @@ namespace XamarinMobileApp.ViewModels
             }
         }
 
-        public async void LoadItemId(string itemId)
+        public void LoadItemId(string UserId)
         {
             try
             {
-                var item = await DataStore.GetItemAsync(itemId);
-                Id = item.Id;
-                Text = item.Text;
-                Description = item.Description;
+
+                var user = userSerivice.GetById(int.Parse(UserId));
+
+                Name = user.Name;
+                LastName = user.LastName;
+                CPF = user.CPF;
+                Birthday = user.Birthday;
+                Gender = Enum.GetName(typeof(Gender), user.Gender);
+
+                Street = user.Address.Street;
+                Number = user.Address.Number;
+                District = user.Address.District;
+                City = user.Address.City;
+                State = user.Address.State;
+                AddressComplement = user.Address.AddressComplement;
+                CEP = user.Address.CEP;
+
+
             }
             catch (Exception)
             {

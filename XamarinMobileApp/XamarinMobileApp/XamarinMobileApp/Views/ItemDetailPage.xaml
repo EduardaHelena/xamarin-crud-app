@@ -2,13 +2,44 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XamarinMobileApp.Views.ItemDetailPage"
-             Title="{Binding Title}">
+             Title="{Binding Name}">
+    <ScrollView>
+        <StackLayout Spacing="20" Padding="15">
+        <Label Text="Name:" FontSize="Medium" />
+        <Label Text="{Binding Name}" FontSize="Small"/>
+        
+        <Label Text="LastName:" FontSize="Medium" />
+        <Label Text="{Binding LastName}" FontSize="Small"/>
 
-    <StackLayout Spacing="20" Padding="15">
-        <Label Text="Text:" FontSize="Medium" />
-        <Label Text="{Binding Text}" FontSize="Small"/>
-        <Label Text="Description:" FontSize="Medium" />
-        <Label Text="{Binding Description}" FontSize="Small"/>
+        <Label Text="CPF:" FontSize="Medium" />
+        <Label Text="{Binding CPF}" FontSize="Small"/>
+
+        <Label Text="Birthday:" FontSize="Medium" />
+        <Label Text="{Binding Birthday}" FontSize="Small"/>
+
+        <Label Text="Gender:" FontSize="Medium" />
+        <Label Text="{Binding Gender}" FontSize="Small"/>
+
+        <Label Text="Street:" FontSize="Medium" />
+        <Label Text="{Binding Street}" FontSize="Small"/>
+
+        <Label Text="Number:" FontSize="Medium" />
+        <Label Text="{Binding Number}" FontSize="Small"/>
+
+        <Label Text="District:" FontSize="Medium" />
+        <Label Text="{Binding District}" FontSize="Small"/>
+        
+        <Label Text="City:" FontSize="Medium" />
+        <Label Text="{Binding City}" FontSize="Small"/>
+
+        <Label Text="State:" FontSize="Medium" />
+        <Label Text="{Binding State}" FontSize="Small"/>
+
+        <Label Text="AddressComplement:" FontSize="Medium" />
+        <Label Text="{Binding AddressComplement}" FontSize="Small"/>
+
+        <Label Text="CEP:" FontSize="Medium" />
+        <Label Text="{Binding CEP}" FontSize="Small"/>
     </StackLayout>
-    
+    </ScrollView>
 </ContentPage>
